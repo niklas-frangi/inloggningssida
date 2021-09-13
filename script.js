@@ -41,7 +41,7 @@ function loggaIn(){
 }
 
 // Kollar om namn och kod stämmer eller inte och kör respektive function
-function validate() {
+function verifiera() {
     let username = document.getElementById("userName").value;
     let password = document.getElementById("password").value;   
     if (username== "test" && password == "1234") {
