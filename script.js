@@ -14,10 +14,10 @@ felInloggning.id = "felInloggingDiv";
 felInloggning.innerHTML = "<p>Fel användarnamn eller lösenord</p>";
 försökIgen.innerHTML = "Försök Igen"
 felInloggning.appendChild(försökIgen);
-försökIgen.onclick = hejTest;
+försökIgen.onclick = tbxFrånFel;
 
 
-function hejTest(){
+function tbxFrånFel(){
     document.getElementById("felInloggingDiv").style.visibility="hidden";
     document.getElementById("startDiv").style.visibility="visible";
 }
@@ -41,7 +41,7 @@ function loggaIn(){
 }
 
 // Kollar om namn och kod stämmer eller inte och kör respektive function
-function validate() {
+function verifiera() {
     let username = document.getElementById("userName").value;
     let password = document.getElementById("password").value;   
     if (username== "test" && password == "1234") {
