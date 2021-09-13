@@ -11,11 +11,16 @@ loggaUtKnapp.onclick = tbxTillStart;
 let felInloggning = document.createElement("div");
 let försökIgen = document.createElement("button");
 felInloggning.id = "felInloggingDiv";
-felInloggning.innerHTML = "<p>Du är felInloggingDiv</p>";
+felInloggning.innerHTML = "<p>Fel användarnamn eller lösenord</p>";
 försökIgen.innerHTML = "Försök Igen"
 felInloggning.appendChild(försökIgen);
-försökIgen.onclick = tbxTillStart;
+försökIgen.onclick = hejTest;
 
+
+function hejTest(){
+    document.getElementById("felInloggingDiv").style.visibility="hidden";
+    document.getElementById("startDiv").style.visibility="visible";
+}
 
 
 // Gömmer den inloggade versionen av hemsidan och visar startsidan istället
@@ -26,26 +31,27 @@ function tbxTillStart(){
 
 
 // Gömmer startDiv när knappen klickas och visar inloggad-div istället
+// och nollställer värderna på namn- och lösenordsfältet.
 function loggaIn(){
     document.body.appendChild(inloggad);
     document.getElementById("startDiv").style.visibility="hidden";
     document.getElementById("inloggadDiv").style.visibility="visible";
+    document.getElementById("userName").value = "";
+    document.getElementById("password").value = "";
 }
 
+// Kollar om namn och kod stämmer eller inte och kör respektive function
 function validate() {
     let username = document.getElementById("userName").value;
-    let password = document.getElementById("password").value;
-    if (username == null || username == "") {
-        alert("Please enter the username.");
-        return false;
- }
-    else if (password == null || password == "") {
-        alert("Please enter the password.");
-        return false;
+    let password = document.getElementById("password").value;   
+    if (username== "test" && password == "1234") {
+        loggaIn();
        }
-    else if (password == "test" || password == "1234") {
-        alert("wow, de funkar");
-        return true;
-       }
-
+    else{
+        document.getElementById("startDiv").style.visibility="hidden";        
+        document.body.appendChild(felInloggning);     
+        document.getElementById("felInloggingDiv").style.visibility="visible";   
+        document.getElementById("userName").value = "";
+        document.getElementById("password").value = "";
+    }
 } 
