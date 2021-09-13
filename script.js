@@ -14,10 +14,10 @@ felInloggning.id = "felInloggingDiv";
 felInloggning.innerHTML = "<p>Fel användarnamn eller lösenord</p>";
 försökIgen.innerHTML = "Försök Igen"
 felInloggning.appendChild(försökIgen);
-försökIgen.onclick = hejTest;
+försökIgen.onclick = tbxFrånFel;
 
 
-function hejTest(){
+function tbxFrånFel(){
     document.getElementById("felInloggingDiv").style.visibility="hidden";
     document.getElementById("startDiv").style.visibility="visible";
 }
