@@ -40,13 +40,15 @@ function loggaIn(){
     document.getElementById("password").value = "";
 }
 
+
+let rättNamn = "test";
+let rättKod = "1234";
+
 // Kollar om namn och kod stämmer eller inte och kör respektive function
-function verifiera() {
-    let username = document.getElementById("userName").value;
-    let password = document.getElementById("password").value;   
-    if (username== "test" && password == "1234") {
+function verifiera() { 
+    if(document.getElementById("userName").value === rättNamn && document.getElementById("password").value=== rättKod){
         loggaIn();
-       }
+    }
     else{
         document.getElementById("startDiv").style.visibility="hidden";        
         document.body.appendChild(felInloggning);     
