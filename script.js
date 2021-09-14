@@ -1,4 +1,4 @@
-//skapar en ny div + knapp när namn och kod stämmer
+//skapar en ny div och knapp som används vid rätt inlogging
 let inloggad = document.createElement("div");
 let loggaUtKnapp = document.createElement("button");
 inloggad.id = "inloggadDiv";
@@ -7,7 +7,7 @@ loggaUtKnapp.innerHTML = "Logga Ut"
 inloggad.appendChild(loggaUtKnapp);
 loggaUtKnapp.onclick = tbxTillStart;
 
-//skapar sida vid fel
+//skapar en ny div och knapp som används vid fel inlogging
 let felInloggning = document.createElement("div");
 let försökIgen = document.createElement("button");
 felInloggning.id = "felInloggingDiv";
@@ -16,7 +16,7 @@ försökIgen.innerHTML = "Försök Igen"
 felInloggning.appendChild(försökIgen);
 försökIgen.onclick = tbxFrånFel;
 
-
+// Gömmer sidan som visas vid fel inlogging och visar startsidan istället
 function tbxFrånFel(){
     document.getElementById("felInloggingDiv").style.visibility="hidden";
     document.getElementById("startDiv").style.visibility="visible";
@@ -25,6 +25,7 @@ function tbxFrånFel(){
 
 // Gömmer den inloggade versionen av hemsidan och visar startsidan istället
 function tbxTillStart(){
+    localStorage.clear();
     document.getElementById("inloggadDiv").style.visibility="hidden";
     document.getElementById("startDiv").style.visibility="visible";
 }
@@ -40,14 +41,15 @@ function loggaIn(){
     document.getElementById("password").value = "";
 }
 
+// Hårdkodar lösenord in i variablarna namn och lösenord
+let namn = "test";
+let lösenord = "1234";
 
-let rättNamn = "test";
-let rättKod = "1234";
-
-// Kollar om namn och kod stämmer eller inte och kör respektive function
+// Kollar om input.value är samma som variablarna namn och lösenord. Om de är det så loggas man in, annars visas felsidan
 function verifiera() { 
-    if(document.getElementById("userName").value === rättNamn && document.getElementById("password").value=== rättKod){
+    if(document.getElementById("userName").value === namn&& document.getElementById("password").value===lösenord){
         loggaIn();
+        localStorage.setItem("inloggadAnvändare", "test");
     }
     else{
         document.getElementById("startDiv").style.visibility="hidden";        
@@ -57,3 +59,11 @@ function verifiera() {
         document.getElementById("password").value = "";
     }
 } 
+
+
+
+if (localStorage.getItem("inloggadAnvändare") === "test"){
+    loggaIn();
+    document.getElementById("startDiv").style.visibility="hidden";
+    document.getElementById("inloggadDiv").style.visibility="visible";
+}
