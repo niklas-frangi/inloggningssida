@@ -44,7 +44,7 @@ startsida.appendChild(knappStart);
 // Skapar en div som visas om man är inloggad
 let inloggad = document.createElement("div");
 inloggad.id = "inloggadDiv";
-inloggad.innerHTML = "<p>Du är inloggad</p>";
+inloggad.innerHTML = "<p>Du är inloggad!</p>";
 
 // Skapar knappen som används för att kunna logga ut och rensa localStorage
 let loggaUtKnapp = document.createElement("button");
